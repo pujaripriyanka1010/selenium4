@@ -26,6 +26,7 @@ public class JSExecutor {
 		js.executeScript("arguments[0].setAttribute('value','priyanka')", driver.findElement(By.name("search_query")));
 		Thread.sleep(2000);
 		
+		//js for click method
 		String parentID = driver.getWindowHandle();
 		driver.switchTo().newWindow(WindowType.TAB);
 		driver.get("https://www.worldometers.info/geography/flags-of-the-world/");
@@ -34,6 +35,7 @@ public class JSExecutor {
 		Thread.sleep(2000);
 		driver.switchTo().window(parentID);
 		
+		//js for scroll into view
 		driver.switchTo().newWindow(WindowType.WINDOW);
 		driver.get("https://www.worldometers.info/geography/flags-of-the-world/");
 		
@@ -41,23 +43,13 @@ public class JSExecutor {
 		
 		
 		Thread.sleep(2000);
+		//js for scroll up and down
 		
 		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 		Thread.sleep(2000);
 		
 		js.executeScript("window.scrollBy(0,-document.body.scrollHeight)");
 		Thread.sleep(2000);
-		
-		//file upload using JSExecutor
-		driver.switchTo().newWindow(WindowType.TAB);
-		driver.get("https://davidwalsh.name/demo/multiple-file-upload.php");
-		driver.findElement(By.id("filesToUpload")).sendKeys("E:\\automation\\Senior-software-engineer\\selenium4\\java-selenium-step-by-step\\Files\\Name.txt");
-		String fileName = driver.findElement(By.cssSelector("#fileList >li")).getText();
-		if(fileName.equals("Name.txt")) {
-			System.out.println("File uploaded successfully");
-		}else {
-			System.out.println("Failed to upload the file");
-		}
 		
 		
 		driver.quit();
